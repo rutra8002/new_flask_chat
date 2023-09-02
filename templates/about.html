@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}About - Flask Web Chat App{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>About</h3>
+    <p>This is a simple chat app created using Flask and Socket.IO.</p>
+    <h4>List of Users:</h4>
+    <ul class="list-group">
+        {% for user, info in users.items() %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    {{ user }}
+                    {% if info.identity %}
+                        <span class="badge badge-info identity-badge">Identity: {{ info.identity }}</span>
+                    {% endif %}
+                </div>
+                <div>
+                    <span class="badge {% if info.admin %}badge-danger{% else %}user-badge{% endif %} admin-badge">
+                        {% if info.admin %}Admin{% else %}User{% endif %}
+                    </span>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

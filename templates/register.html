@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Flask Web Chat App{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Register</h2>
+    {% if registration_success %}
+    <div class="alert alert-success" role="alert">
+        Registration successful. You can now log in.
+    </div>
+    {% endif %}
+    {% if username_taken %}
+    <div class="alert alert-danger" role="alert">
+        Username is already taken.
+    </div>
+    {% endif %}
+    {% if username_length_exceeded %}
+    <div class="alert alert-danger" role="alert">
+    Username cannot exceed 32 characters.
+    </div>
+    {% endif %}
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" maxlength="32" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+{% endblock %}

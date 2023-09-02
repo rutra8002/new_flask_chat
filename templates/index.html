@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Flask Web Chat App{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if username %}
+    <div class="chat-container">
+        <div class="channels">
+            {% for channel in channels %}
+            <button class="btn btn-secondary channel-button" data-channel="{{ channel.name }}">{{ channel.name }}</button>
+            {% endfor %}
+            <button class="btn btn-success create-channel-button" id="create-channel-button">Create Channel</button>
+            <input type="text" class="form-control" id="new-channel-name" placeholder="Enter channel name...">
+            <p class="text-success mt-2" id="success-message" style="display: none;">Channel created successfully. Refresh the page to see it.</p>
+
+        </div>
+
+        <div class="messages-and-input">
+            <div class="message-container">
+                {% for message in messages %}
+                <div class="message-bubble">
+                    <div class="message-content">{{ message.message }}</div>
+                    <div class="timestamp">{{ message.timestamp }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        <form id="message-form" action="/send_message" method="post">
+            <input type="hidden" id="selected-channel" name="selected_channel" value="general">
+            <div class="form-group">
+                <input type="text" class="form-control" id="message-input" name="message" placeholder="Type your message...">
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    {% else %}
+    <p>Please <a href="/login">log in</a> to use the chat app.</p>
+    {% endif %}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script>
+    const socket = io.connect("http://" + document.domain + ":" + location.port);
+
+    socket.on("connect", function () {
+        console.log("Connected to server");
+    });
+
+    socket.on("new_message", function(data) {
+        const selectedChannel = selectedChannelInput.value;
+        if (data.selected_channel === selectedChannel) {
+            displayMessage(data.username, data.message, data.timestamp);  // Include the timestamp
+        }
+    });
+
+
+
+
+</script>
+{% endblock %}

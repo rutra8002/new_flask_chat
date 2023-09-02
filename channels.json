@@ -1,0 +1,32 @@
+{
+    "channels": [
+        {
+            "name": "general",
+            "messages_file": "general_messages.json"
+        },
+        {
+            "name": "announcements",
+            "messages_file": "announcements_messages.json"
+        },
+        {
+            "name": "chess",
+            "messages_file": "chess_messages.json"
+        },
+        {
+            "name": "coding",
+            "messages_file": "coding_messages.json"
+        },
+        {
+            "name": "memes",
+            "messages_file": "memes.json"
+        },
+        {
+            "name": "sus",
+            "messages_file": "sus_messages.json"
+        },
+        {
+            "name": "susss",
+            "messages_file": "susss_messages.json"
+        }
+    ]
+}
