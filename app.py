@@ -71,8 +71,11 @@ def load_channels():
 @app.route('/')
 def index():
     if 'username' in session:
+        users = load_users()
+        user_info = users.get(session['username'])
+        if not user_info.get("verified", False):
+            return render_template('not_verified.html')  # Create a separate template for non-verified users
         channels = load_channels()
-        print(channels)
         if channels:
             messages = load_messages(channels[0]['name'])
         else:
@@ -93,7 +96,10 @@ def login():
 
         if user_info and user_info["password"] == password:
             session['username'] = username
-            return redirect('/')
+            if user_info.get("verified", False):
+                return redirect('/')
+            else:
+                return render_template('not_verified.html')  # Render the not_verified.html template for non-verified users
         else:
             return render_template('login.html', invalid_credentials=True)
 
@@ -229,7 +235,7 @@ def register():
         elif len(username) > 32:
             return render_template('register.html', username_length_exceeded=True)
         else:
-            users[username] = {"password": password, "admin": False}
+            users[username] = {"password": password, "admin": False, "verified": False}  # Set verified to False
             save_users(users)
             return render_template('register.html', registration_success=True)
 
