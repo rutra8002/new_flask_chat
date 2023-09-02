@@ -1,137 +1,142 @@
+<!-- profile.html -->
 {% extends 'base.html' %}
 
 {% block title %}Profile - Flask Web Chat App{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h2>Profile</h2>
-    {% if is_admin %}
-        <div class="alert alert-success" role="alert">
-            User {{ username }} is an admin
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Profile Picture Section -->
+            <img src="{{ url_for('static', filename='profile_pics/default_profile.jpg') }}" alt="Profile Picture" class="img-fluid rounded-circle profile-pic">
         </div>
-
-    {% else %}
-        <div class="alert alert-danger" role="alert">
-            User {{ username }} is not an admin
-        </div>
-
-    {% endif %}
-    {% if success_message %}
-    <div class="alert alert-success" role="alert">
-        {{ success_message }}
-    </div>
-    {% endif %}
-    {% if error_message %}
-    <div class="alert alert-danger" role="alert">
-        {{ error_message }}
-    </div>
-    {% endif %}
-    <form action="/change_username" method="post">
-        <div class="form-group">
-            {% if username_error %}
-                <div class="alert alert-danger mt-3" role="alert">
-                    {{ username_error }}
+        <div class="col-md-8">
+            <h2>Profile</h2>
+            {% if is_admin %}
+                <div class="alert alert-success" role="alert">
+                    User {{ username }} is an admin
                 </div>
-            {% elif username_success %}
-                <div class="alert alert-success mt-3" role="alert">
-                    {{ username_success }}
-                </div>
-            {% endif %}
-            <label for="new-username">New Username</label>
-            <input type="text" class="form-control" id="new-username" name="new_username" maxlength="32" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Change Username</button>
-    </form>
-    {% if password_change_success %}
-        <div class="alert alert-success mt-3" role="alert">
-            Password changed successfully!
-        </div>
-    {% endif %}
-
-    {% if password_change_error %}
-        <div class="alert alert-danger mt-3" role="alert">
-            Incorrect current password. Password not changed.
-        </div>
-    {% endif %}
-    <form action="/change_password" method="post">
-        <div class="form-group">
-            <label for="current-password">Current Password</label>
-            <input type="password" class="form-control" id="current-password" name="current_password" required>
-        </div>
-        <div class="form-group">
-            <label for="new-password">New Password</label>
-            <input type="password" class="form-control" id="new-password" name="new_password" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Change Password</button>
-    </form>
-
-    <div class="about-me">
-        <h3>Identity</h3>
-        {% if user_info.get('identity') %}
-            <p>{{ user_info.get('identity') }}</p>
-        {% else %}
-            <p>No information available.</p>
-        {% endif %}
-    <div class="about-me">
-        <h3>About Me</h3>
-            {% if user_info.get('about_me') %}
-                <p>{{ user_info.get('about_me') }}</p>
             {% else %}
-                <p>No information available.</p>
+                <div class="alert alert-danger" role="alert">
+                    User {{ username }} is not an admin
+                </div>
             {% endif %}
-        </div>
-    {% if about_updated %}
-        <div class="alert alert-success mt-3" role="alert">
-            Identity updated successfully!
-        </div>
-    {% endif %}
-    </div>
-    {% if success_message %}
-    <div class="alert alert-success mt-3" role="alert">
-        {{ success_message }}
-    </div>
-    {% endif %}
-    {% if error_message %}
-    <div class="alert alert-danger mt-3" role="alert">
-        {{ error_message }}
-    </div>
-    {% endif %}
-    <form action="/update_identity" method="post">
-        <div class="form-group">
-            {% if identity_error %}
-            <div class="alert alert-danger mt-2" role="alert">
-                {{ identity_error }}
-            </div>
-            {% endif %}
-            {% if identity_success %}
-            <div class="alert alert-success mt-2" role="alert">
-                {{ identity_success }}
-            </div>
-            {% endif %}
-            <label for="about-me">Identity (Up to 72 characters)</label>
-            <textarea class="form-control" id="about-me" name="identity" rows="3" maxlength="72">{{ user_info.get('identity', '') }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Update Identity</button>
-    </form>
-    <form action="/update_about_me" method="post">
-        <div class="form-group">
-            {% if about_me_error %}
-            <div class="alert alert-danger mt-2" role="alert">
-                {{ about_me_error }}
-            </div>
-            {% endif %}
-            {% if about_me_success %}
-            <div class="alert alert-success mt-2" role="alert">
-                {{ about_me_success }}
-            </div>
-            {% endif %}
-            <label for="about-me">About Me (Up to 200 characters)</label>
-            <textarea class="form-control" id="about-me" name="about_me" rows="3" maxlength="200">{{ user_info.get('about_me', '') }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Update About Me</button>
-    </form>
-    </div>
 
+            {% if success_message %}
+            <div class="alert alert-success" role="alert">
+                {{ success_message }}
+            </div>
+            {% endif %}
+            {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+            {% endif %}
+            <form action="/change_username" method="post">
+                <div class="form-group">
+                    {% if username_error %}
+                        <div class="alert alert-danger mt-3" role="alert">
+                            {{ username_error }}
+                        </div>
+                    {% elif username_success %}
+                        <div class="alert alert-success mt-3" role="alert">
+                            {{ username_success }}
+                        </div>
+                    {% endif %}
+                    <label for="new-username">New Username</label>
+                    <input type="text" class="form-control" id="new-username" name="new_username" maxlength="32" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Change Username</button>
+            </form>
+            {% if password_change_success %}
+                <div class="alert alert-success mt-3" role="alert">
+                    Password changed successfully!
+                </div>
+            {% endif %}
 
+            {% if password_change_error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    Incorrect current password. Password not changed.
+                </div>
+            {% endif %}
+            <form action="/change_password" method="post">
+                <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" class="form-control" id="current-password" name="current_password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" class="form-control" id="new-password" name="new_password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
 
+            <div class="about-me">
+                <h3>Identity</h3>
+                {% if user_info.get('identity') %}
+                    <p>{{ user_info.get('identity') }}</p>
+                {% else %}
+                    <p>No information available.</p>
+                {% endif %}
+            </div>
+            <div class="about-me">
+                <h3>About Me</h3>
+                {% if user_info.get('about_me') %}
+                    <p>{{ user_info.get('about_me') }}</p>
+                {% else %}
+                    <p>No information available.</p>
+                {% endif %}
+            </div>
+            {% if about_updated %}
+                <div class="alert alert-success mt-3" role="alert">
+                    Identity updated successfully!
+                </div>
+            {% endif %}
+            {% if success_message %}
+            <div class="alert alert-success mt-3" role="alert">
+                {{ success_message }}
+            </div>
+            {% endif %}
+            {% if error_message %}
+            <div class="alert alert-danger mt-3" role="alert">
+                {{ error_message }}
+            </div>
+            {% endif %}
+            <form action="/update_identity" method="post">
+                <div class="form-group">
+                    {% if identity_error %}
+                    <div class="alert alert-danger mt-2" role="alert">
+                        {{ identity_error }}
+                    </div>
+                    {% endif %}
+                    {% if identity_success %}
+                    <div class="alert alert-success mt-2" role="alert">
+                        {{ identity_success }}
+                    </div>
+                    {% endif %}
+                    <label for="about-me">Identity (Up to 72 characters)</label>
+                    <textarea class="form-control" id="about-me" name="identity" rows="3" maxlength="72">{{ user_info.get('identity', '') }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Identity</button>
+            </form>
+            <form action="/update_about_me" method="post">
+                <div class="form-group">
+                    {% if about_me_error %}
+                    <div class="alert alert-danger mt-2" role="alert">
+                        {{ about_me_error }}
+                    </div>
+                    {% endif %}
+                    {% if about_me_success %}
+                    <div class="alert alert-success mt-2" role="alert">
+                        {{ about_me_success }}
+                    </div>
+                    {% endif %}
+                    <label for="about-me">About Me (Up to 200 characters)</label>
+                    <textarea class="form-control" id="about-me" name="about_me" rows="3" maxlength="200">{{ user_info.get('about_me', '') }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Update About Me</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
