@@ -20,26 +20,30 @@
             </a>
 
             {% if username %}
-            <li class="nav-item">
-                <a class="nav-link px-3 py-2">Logged in as {{ username }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="/profile">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="/logout">Logout</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2">Logged in as {{ username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2" href="/logout">Logout</a>
+                </li>
             {% else %}
-            <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="/register">Register</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2" href="/register">Register</a>
+                </li>
             {% endif %}
+
+
+
+
         </ul>
     </nav>
     <div class="container mt-4">

@@ -67,22 +67,28 @@ def load_channels():
         print("Error loading channels:", e)
         return []
 
+def is_verified(username):
+    users = load_users()  # Load user data from users.json
+    user_info = users.get(username, {})
+    return user_info.get("verified", False)
+
 
 @app.route('/')
 def index():
     if 'username' in session:
         users = load_users()
-        user_info = users.get(session['username'])
-        if not user_info.get("verified", False):
-            return render_template('not_verified.html')  # Create a separate template for non-verified users
-        channels = load_channels()
-        if channels:
-            messages = load_messages(channels[0]['name'])
-        else:
-            messages = []
-        return render_template('index.html', username=session['username'], channels=channels, messages=messages)
-    return redirect('/login')
+        user_info = users.get(session['username'], {})
+        if user_info.get("verified", False):
+            # User is verified, continue with the regular behavior
+            channels = load_channels()
+            if channels:
+                messages = load_messages(channels[0]['name'])
+            else:
+                messages = []
+            return render_template('index.html', username=session['username'], channels=channels, messages=messages)
 
+    # If the user is either not logged in or not verified, show the "Not Logged In" page
+    return render_template('not_logged_in.html')
 
 
 

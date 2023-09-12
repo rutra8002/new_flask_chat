@@ -1,14 +1,19 @@
 {
-    "user2": {
+    "adminn": {
+        "password": "ggg",
+        "admin": true,
+        "identity": "sedsf",
+        "about_me": "sdfsd",
+        "verified": true
+    },
+    "defaultuser2": {
         "password": "password2",
         "admin": false,
         "verified": true
     },
     "asd": {
-        "password": "jaj",
-        "admin": true,
-        "identity": "rura",
-        "about_me": "hiii",
-        "verified": true
+        "password": "asd",
+        "admin": false,
+        "verified": false
     }
 }

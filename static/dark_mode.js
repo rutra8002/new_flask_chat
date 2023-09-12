@@ -20,6 +20,8 @@ darkModeToggle.addEventListener("click", function () {
 });
 
 function updateDarkModeText(text) {
-    const darkModeText = document.querySelector("#dark-mode-toggle");
-    darkModeText.textContent = text;
+    const darkModeTextElement = document.querySelector("#dark-mode-text"); // Update the selector to match the correct element
+    if (darkModeTextElement) {
+        darkModeTextElement.textContent = text;
+    }
 }
