@@ -27,6 +27,10 @@
         {
             "name": "susss",
             "messages_file": "susss_messages.json"
+        },
+        {
+            "name": "asdfghjkl",
+            "messages_file": "asdfghjkl_messages.json"
         }
     ]
 }

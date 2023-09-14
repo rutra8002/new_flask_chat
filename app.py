@@ -229,6 +229,11 @@ def toggle_dark_mode():
         session['dark_mode'] = not session.get('dark_mode', False)
     return redirect(request.referrer)
 
+@app.route('/snake')
+def snake():
+    return render_template('snake.html')
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -283,4 +288,4 @@ def update_about_me():
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True, allow_unsafe_werkzeug=True)
