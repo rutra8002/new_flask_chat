@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Snake Game{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Snake Game</h1>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <canvas id="game-canvas" class="w-100" width="400" height="400"></canvas>
+            </div>
+            <div class="col-4">
+                <button id="start-button" class="btn btn-primary btn-block">Start Game</button>
+            </div>
+        </div>
+        <div class="mt-4">
+            <a href="/" class="btn btn-secondary">Back to Chat</a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='snake.js') }}"></script>
+{% endblock %}

@@ -18,5 +18,35 @@
         "username": "user2",
         "message": "hi",
         "timestamp": "2023-09-02 10:02:31"
+    },
+    {
+        "username": "adminn",
+        "message": "hello \\n there",
+        "timestamp": "2023-09-14 15:52:20"
+    },
+    {
+        "username": "adminn",
+        "message": "unga bunga",
+        "timestamp": "2023-09-14 15:52:25"
+    },
+    {
+        "username": "adminn",
+        "message": "Channel 'asdfghjkl' created.",
+        "timestamp": "2023-09-14 15:52:44"
+    },
+    {
+        "username": "adminn",
+        "message": "def fibiunacci(a, b):",
+        "timestamp": "2023-09-14 15:56:24"
+    },
+    {
+        "username": "adminn",
+        "message": "return True",
+        "timestamp": "2023-09-14 15:56:28"
+    },
+    {
+        "username": "adminn",
+        "message": "rdtfygbhu",
+        "timestamp": "2023-09-14 16:16:07"
     }
 ]
