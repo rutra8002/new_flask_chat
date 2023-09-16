@@ -229,9 +229,6 @@ def toggle_dark_mode():
         session['dark_mode'] = not session.get('dark_mode', False)
     return redirect(request.referrer)
 
-@app.route('/snake')
-def snake():
-    return render_template('snake.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
