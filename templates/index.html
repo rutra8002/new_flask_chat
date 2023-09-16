@@ -3,8 +3,10 @@
 {% block title %}Flask Web Chat App{% endblock %}
 
 {% block content %}
+
 <div class="container mt-4">
     {% if username %}
+    <div id="clock"></div>
     <div class="chat-container">
         <div class="channels">
             {% for channel in channels %}
@@ -36,6 +38,7 @@
     <p>Please <a href="/login">log in</a> to use the chat app.</p>
     {% endif %}
 </div>
+<script src="{{ url_for('static', filename='clock.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <script>

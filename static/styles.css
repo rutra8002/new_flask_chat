@@ -217,3 +217,24 @@
     width: 200px; /* Adjust the width as needed */
     height: 200px; /* Adjust the height as needed */
 }
+
+#clock {
+  position: fixed;
+  top: 60px;
+  right: 50px;
+  font-size: 48px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  z-index: 9999;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fade 1s infinite alternate;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
