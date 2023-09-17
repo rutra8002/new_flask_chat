@@ -223,11 +223,16 @@
   top: 60px;
   right: 50px;
   font-size: 48px;
-  color: #fff;
+  color: #000000;
   font-family: 'Roboto', sans-serif;
   z-index: 9999;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   animation: fade 1s infinite alternate;
+}
+
+.dark-mode #clock {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 @keyframes fade {
