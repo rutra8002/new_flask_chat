@@ -255,9 +255,9 @@
 
 @keyframes fade {
   from {
-    opacity: 0.85;
+    opacity: 0.65;
   }
   to {
-    opacity: 0.6;
+    opacity: 0.95;
   }
 }
