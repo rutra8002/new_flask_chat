@@ -231,7 +231,7 @@
   background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
   padding: 10px;
   box-sizing: border-box;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
@@ -242,6 +242,8 @@
 }
 
 .dark-mode #clock {
+  border: 1px solid white;
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
   background: linear-gradient(to bottom, #333333, #222222);
@@ -256,6 +258,6 @@
     opacity: 0.85;
   }
   to {
-    opacity: 0.55;
+    opacity: 0.6;
   }
 }
