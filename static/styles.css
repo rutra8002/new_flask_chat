@@ -222,17 +222,33 @@
   position: fixed;
   top: 60px;
   right: 50px;
-  font-size: 48px;
+  font-size: 64px;
   color: #000000;
   font-family: 'Roboto', sans-serif;
   z-index: 9999;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   animation: fade 1s infinite alternate;
+  background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .dark-mode #clock {
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to bottom, #333333, #222222);
+}
+
+#clock:hover {
+  transform: scale(1.1);
 }
 
 @keyframes fade {
