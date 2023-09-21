@@ -46,8 +46,13 @@ def save_message(username, message, channel):
 
         messages.append(message_data)
 
-        with open(f'messages/{messages_file}', 'w') as f:
-            json.dump(messages, f, indent=4)
+        try:
+            with open(f'messages/{messages_file}', 'r') as f:
+                messages = json.load(f)
+        except FileNotFoundError as e:
+            print(f"File not found: {e}")
+        except json.JSONDecodeError as e:
+            print(f"JSON decoding error: {e}")
 
 
 def load_users():
