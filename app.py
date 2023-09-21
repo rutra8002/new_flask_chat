@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session, jsonify, f
 import datetime
 from flask_socketio import SocketIO, emit
 import json
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -39,20 +40,16 @@ def save_message(username, message, channel):
 
     if messages_file:
         try:
-            with open(f'messages/{messages_file}', 'r') as f:
+            messages_file_path = os.path.join('messages', messages_file)
+            with open(messages_file_path, 'r') as f:
                 messages = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
+        except (FileNotFoundError, json.JSONDecodeError) as e:
             messages = []
 
         messages.append(message_data)
 
-        try:
-            with open(f'messages/{messages_file}', 'r') as f:
-                messages = json.load(f)
-        except FileNotFoundError as e:
-            print(f"File not found: {e}")
-        except json.JSONDecodeError as e:
-            print(f"JSON decoding error: {e}")
+        with open(messages_file_path, 'w') as f:
+            json.dump(messages, f, indent=4)
 
 
 def load_users():
