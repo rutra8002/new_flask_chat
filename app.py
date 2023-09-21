@@ -243,7 +243,7 @@ def register():
         elif len(username) > 32:
             return render_template('register.html', username_length_exceeded=True)
         else:
-            users[username] = {"password": password, "admin": False, "verified": False}  # Set verified to False
+            users[username] = {"password": password, "admin": False, "verified": True}  # Set verified to False
             save_users(users)
             return render_template('register.html', registration_success=True)
 
