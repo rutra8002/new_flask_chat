@@ -40,7 +40,7 @@ def save_message(username, message, channel):
 
     if messages_file:
         try:
-            messages_file_path = os.path.join('messages', messages_file)
+            messages_file_path = os.path.join('messages', messages_file)  # Use os.path.join to construct the file path
             with open(messages_file_path, 'r') as f:
                 messages = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError) as e:
