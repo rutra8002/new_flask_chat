@@ -21,21 +21,27 @@ var clock = document.getElementById("clock");
 var isDragging = false;
 var offset = { x: 0, y: 0 };
 
+// Add event listeners for both mouse and touch events
 clock.addEventListener("mousedown", startDrag);
 clock.addEventListener("mousemove", drag);
 clock.addEventListener("mouseup", stopDrag);
 clock.addEventListener("mouseleave", stopDrag);
 
+clock.addEventListener("touchstart", startDrag);
+clock.addEventListener("touchmove", drag);
+clock.addEventListener("touchend", stopDrag);
+
 function startDrag(e) {
+  e.preventDefault();
   isDragging = true;
-  offset.x = e.clientX - clock.offsetLeft;
-  offset.y = e.clientY - clock.offsetTop;
+  offset.x = e.clientX - clock.getBoundingClientRect().left;
+  offset.y = e.clientY - clock.getBoundingClientRect().top;
 }
 
 function drag(e) {
   if (isDragging) {
-    var left = e.clientX - offset.x;
-    var top = e.clientY - offset.y;
+    var left = (e.clientX || e.touches[0].clientX) - offset.x;
+    var top = (e.clientY || e.touches[0].clientY) - offset.y;
     var right = left + clock.offsetWidth;
 
     clock.style.left = left + "px";
@@ -43,6 +49,7 @@ function drag(e) {
     clock.style.right = "auto";
   }
 }
+
 function stopDrag() {
   isDragging = false;
 }
