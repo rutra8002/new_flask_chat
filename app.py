@@ -38,18 +38,19 @@ def save_message(username, message, channel):
     # Find the messages file associated with the specified channel
     messages_file = next((channel_info["messages_file"] for channel_info in channels if channel_info["name"] == channel), None)
 
+    messages_file_path = None  # Define with a default value
     if messages_file:
         try:
-            messages_file_path = os.path.join('messages', messages_file)  # Use os.path.join to construct the file path
+            messages_file_path = os.path.join('messages', messages_file)  # Assign a value using os.path.join
             with open(messages_file_path, 'r') as f:
                 messages = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError) as e:
             messages = []
 
-        messages.append(message_data)
-
+    if messages_file_path:  # Check if messages_file_path has a valid value
         with open(messages_file_path, 'w') as f:
             json.dump(messages, f, indent=4)
+
 
 
 def load_users():
